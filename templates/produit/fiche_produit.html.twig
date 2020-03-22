@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
+{% block body %}
+
+
+	<div style="text-align:center;">
+		<h1>{{ produit.nom }}</h1><br><br>
+		
+		{% if produit.photo is not null %}
+			<img width="300" style="border:solid black 1px;" src="
+			{{ asset('/uploads/'~ produit.photo) }}">
+		{% else %}
+			{{ 'produit.tableau.visuel'|trans }}
+		{% endif %}
+		<br><br><br><br>
+		
+		<div class="div_quantite_prix"><p><b>
+			{% if produit.quantite > 1 %}{{ produit.quantite }} {{ 'produit.tableau.pqnt>1'|trans }}
+			{% elseif produit.quantite == 1 %}{{ produit.quantite }} {{ 'produit.tableau.pqnt===1'|trans }}
+			{% else %} {{ 'produit.tableau.pqnt===0'|trans }}
+			{% endif %}</b></p>
+		</div><br>
+		
+		<div class="div_quantite_prix"><p><b>Prix : {{ produit.prix|number_format(2) }} {{ 'produit.tableau.monnaie'|trans }}</b></p></div><br>
+		{% if produit.quantite > 0%}
+			{{ form(form_ajout) }}<br>
+		{% else %}
+			{{ "produit.stock===0"|trans }}<br><br>
+		{% endif %}
+		
+		<td><button class="button_2" onclick="location.href='{{path('delete_produit',{ 'id':produit.id }) }}'"><b>{{ 'form.supprimer'|trans }}</b></button></td>
+	</div>
+
+
+{% endblock %}

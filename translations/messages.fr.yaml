@@ -1,0 +1,52 @@
+
+produit:
+    produit: 'Produit'
+    titre: 'Page produits'
+    liste: 'Liste des produits'
+    ajout: 'Ajouter un produit'
+    stock===0: 'Produit Indisponible, rupture de stock'
+    tableau:
+        photo: 'Photo'
+        produit: 'Produit'
+        quantite: 'Quantité'
+        prix: 'Prix'
+        informations: 'Informations'
+        visuel: 'Aucun visuel'
+        pqnt>1: 'produits en stock'
+        pqnt===1: 'produit en stock'
+        pqnt===0: 'Aucun produit en stock'
+        monnaie: '€'
+        boutoninfo: 'Infos'
+
+panier:
+    panier: 'Panier'
+    titre: 'Page Panier'
+    liste===1: 'Produits dans votre panier'
+    liste>1: 'Produits dans votre panier'
+    nombre_panier_seul: "Nombre d'article dans le panier"
+    nombre_panier_plusieurs: "Nombre d'articles dans le panier"
+    montant_panier: 'Montant total du panier'
+    rien: "Il n'y a aucun article dans votre panier."
+    tableau:
+        produit: 'Produit'
+        quantite: 'Quantité'
+        montant_article: 'Montant par article'
+        montant_total: 'Montant total'
+        supprimer: 'Suppression'
+
+form:
+    photo: 'Photo'
+    photovalide: 'Veuillez mettre une photo valide.'
+    nom: 'Nom'
+    quantite: 'Quantité'
+    prix: 'Prix'
+    sauvegarder: 'Sauvegarder'
+    ajout_panier: 'Ajouter au panier'
+    supprimer: 'Supprimer'
+
+message:
+    supprimer_produit_panier_vrai: 'Produit retiré du panier'
+    supprimer_produit_vrai: 'Produit supprimé'
+    ajouter_produit_vrai: 'Produit ajouté'
+    ajouter_produit_panier_vrai: 'Produit ajouté à votre panier'
+    erreur: 'Une erreur est survenue'

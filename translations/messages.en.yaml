@@ -1,0 +1,52 @@
+
+produit:
+    produit: 'Product'
+    titre: 'Products page'
+    liste: 'Products list'
+    ajout: 'Add a product'
+    stock===0: 'Product unavailable, out of stock.'
+    tableau:
+        photo: 'Picture'
+        produit: 'Product'
+        quantite: 'Quantity'
+        prix: 'Price'
+        informations: 'Informations'
+        visuel: 'No visual'
+        pqnt>1 : 'products in stock'
+        pqnt===1 : 'product in stock'
+        pqnt===0 : 'out of stock'
+        monnaie: '$'
+        boutoninfo: 'Infos'
+
+panier:
+    panier: 'Shopping cart'
+    titre: 'Shopping cart page'
+    liste===1: 'Product in your cart'
+    liste>1: 'Products in your cart'
+    nombre_panier_seul: 'Number of article in your cart'
+    nombre_panier_plusieurs: 'Number of articles in your cart'
+    montant_panier: 'Amount of the cart'
+    rien: 'There is no article in your cart.'
+    tableau:
+        produit: 'Product'
+        quantite: 'Quantity'
+        montant_article: 'Amount by article'
+        montant_total: 'Total amount'
+        supprimer: 'Deletion'
+
+form:
+    photo: 'Picture'
+    photovalide: 'Please, make sure your picture is valid.'
+    nom: 'Name'
+    quantite: 'Quantity'
+    prix: 'Price'
+    sauvegarder: 'Save'
+    ajout_panier: 'Add to card'
+    supprimer: 'Delete'
+
+message:
+    supprimer_produit_panier_vrai: 'Product erase from your cart'
+    supprimer_produit_vrai: 'Product Deleted'
+    ajouter_produit_vrai: 'Product added'
+    ajouter_produit_panier_vrai: 'Product added to your cart'
+    erreur: 'An error as occurred'

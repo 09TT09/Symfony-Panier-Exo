@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+
+
+	<h1>{{ 'produit.titre'|trans }}</h1><br>
+	
+	{% if produits is not empty %}
+		<table class="classtable">
+			<thead>
+				<tr>
+					<th>{{ 'produit.tableau.photo'|trans }}</th>
+					<th>{{ 'produit.tableau.produit'|trans }}</th>
+					<th>{{ 'produit.tableau.quantite'|trans }}</th>
+					<th>{{ 'produit.tableau.prix'|trans }}</th>
+					<th>{{ 'produit.tableau.informations'|trans }}</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<h2>{{ 'produit.liste'|trans }}</h2>
+				{% for produit in produits %}
+					<tr>
+						<td><b>
+						
+							{% if produit.photo is not null %}
+								<img height="30" src="
+								{{ asset('/uploads/'~ produit.photo) }}">
+							{% else %}
+								{{ 'produit.tableau.visuel'|trans }}
+							{% endif %}
+						
+						</b></td>
+						<td class="bgOrange"><b>{{ produit.nom }}</b></td>
+						<td><b>
+						{% if produit.quantite > 1 %}{{ produit.quantite }} {{ 'produit.tableau.pqnt>1'|trans }}
+						{% elseif produit.quantite == 1 %}{{ produit.quantite }} {{ 'produit.tableau.pqnt===1'|trans }}
+						{% else %}{{ 'produit.tableau.pqnt===0'|trans }}
+						{% endif %}
+						</b></td>
+						<td class="bgBlue"><b>{{ produit.prix|number_format(2) }} {{ 'produit.tableau.monnaie'|trans }}</b></td>
+						<td><button class="button_2" onclick="location.href='{{path('fiche_produit',{ 'id':produit.id }) }}'"><b>{{ 'produit.tableau.boutoninfo'|trans }}</b></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table><br>
+	{% endif %}
+	
+	<h2>{{ 'produit.ajout'|trans }}</h2>
+	
+	{{ form(form_ajout) }}
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+
+
+	<h1>{{ 'panier.titre'|trans }}</h1><br>
+	
+	{% if paniers is not empty %}
+	{% set coutTotal = 0 %}
+	{% set articlesTotal = 0 %}
+		{% for panier in paniers %}
+			{% if panier is not empty %}
+				{% set coutTotal = coutTotal + ( panier.quantite * panier.produit.prix ) %}
+				{% set articlesTotal = articlesTotal + panier.quantite %}
+			{% endif %}
+		{% endfor %}
+		
+		<table class="classtable">
+			<thead>
+				<tr>
+					<th>{{ 'panier.tableau.produit'|trans }}</th>
+					<th>{{ 'panier.tableau.quantite'|trans }}</th>
+					<th>{{ 'panier.tableau.montant_article'|trans }}</th>
+					<th>{{ 'panier.tableau.montant_total'|trans }}</th>
+					<th>{{ 'panier.tableau.supprimer'|trans }}</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			{% if articlesTotal > 1 %}
+				<h2>{{ 'panier.liste>1'|trans }}</h2>
+			{% elseif articlesTotal ==  1 %}
+				<h2>{{ 'panier.liste===1'|trans }}</h2>
+			{% endif %}
+				
+				{% for panier in paniers %}
+					{% if panier is not empty %}
+						<tr>
+							<td class="bgOrange">{{ panier.produit.nom }}</td>
+							<td>{{ panier.quantite }}</td>
+							<td class="bgBlue">{{ panier.produit.prix }} {{ 'produit.tableau.monnaie'|trans }}</td>
+							<td class="bgBlueReverse">{{ (panier.quantite * panier.produit.prix)|number_format(2) }} {{ 'produit.tableau.monnaie'|trans }}</td>
+							<td><button class="button_2" onclick="location.href='{{path('delete_panier_prod',{ 'id':panier.id }) }}'"><b>{{ 'form.supprimer'|trans }}</b></button></td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table><br>
+
+		{% if articlesTotal > 1 %}
+			<h2>{{ 'panier.nombre_panier_plusieurs'|trans }}
+		{% elseif articlesTotal ==  1 %}
+			<h2>{{ 'panier.nombre_panier_seul'|trans }}
+		{% endif %} :
+		<br><br>{{ articlesTotal }}</h2>
+		<h2>{{ 'panier.montant_panier'|trans }} :
+		<br><br>{{ coutTotal|number_format(2) }} {{ 'produit.tableau.monnaie'|trans }}</h2>
+	{% else %}	
+		<div style="text-align:center;">
+			{{ 'panier.rien'|trans }}<br><br>
+			<button class="button_2" onclick="location.href='{{path('produit')}}'"><b>{{ 'produit.produit'|trans }}</b></button>
+		</div>
+	{% endif %}
+
+
+{% endblock %}
